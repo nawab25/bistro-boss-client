@@ -20,7 +20,7 @@ const Featured = () => {
                     <h3>March 20, 2023</h3>
                     <h1 className="uppercase text-lg">Where can i get some?</h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam tempore ratione repellat nihil aliquid. Tenetur nemo perferendis cum nesciunt aliquid sunt amet error inventore quia consequatur quasi, iste necessitatibus. Quas totam numquam similique tenetur ullam atque saepe quod iusto facere. Eveniet optio voluptate, facere fugiat adipisci non esse aut quae?</p>
-                    <button className="btn btn-outline btn-info mt-5">READ MORE</button>
+                    <button className="btn btn-outline btn-info border-0 border-b-4 mt-5">READ MORE</button>
                 </div>
             </div>
             </div>
