@@ -20,9 +20,9 @@ const TopMenu = () => {
                         menu={menu}></TopMenuStyle>)
                 }
             </div>
-           <div className="flex justify-center mt-4">
-           <button className="btn btn-outline uppercase border-0 border-b-4">View full menu</button>
-           </div>
+            <div className="flex justify-center mt-4">
+                <button className="btn btn-outline uppercase border-0 border-b-4">View full menu</button>
+            </div>
         </div>
     );
 };

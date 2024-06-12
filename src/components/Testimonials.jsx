@@ -16,7 +16,7 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="px-24 py-24">
+        <div className="px-24 pt-10 pb-20">
             <SectionTitle subHeading='What Our Clients Say' heading='Testimonials'></SectionTitle>
             <Swiper navigation={true} loop={true} modules={[Navigation]} className="mySwiper mt-14">                
                     {
