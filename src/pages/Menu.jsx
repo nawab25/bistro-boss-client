@@ -23,15 +23,15 @@ const Menu = () => {
             </Helmet>
             <Cover img={menuImg} title='Our menu'></Cover>
             <SectionTitle subHeading="Don't miss" heading="Today's offer"></SectionTitle>
-            <MenuCategory items={offered} btnTitle="order your favourite food"></MenuCategory>
+            <MenuCategory items={offered} btnTitle="order your favourite food" category="offered"></MenuCategory>
             <Cover img={dessertImg} title="Desserts"></Cover>
-            <MenuCategory items={dessert} btnTitle="order your favourite food"></MenuCategory>
+            <MenuCategory items={dessert} btnTitle="order your favourite food" category="desserts"></MenuCategory>
             <Cover img={pizzaImg} title="Pizza"></Cover>
-            <MenuCategory items={pizza} btnTitle="order your favourite food"></MenuCategory>
+            <MenuCategory items={pizza} btnTitle="order your favourite food" category="pizza"></MenuCategory>
             <Cover img={saladImg} title="Salads"></Cover>
-            <MenuCategory items={salad} btnTitle="order your favourite food"></MenuCategory>
+            <MenuCategory items={salad} btnTitle="order your favourite food" category="salad"></MenuCategory>
             <Cover img={soupImg} title="Soups"></Cover>
-            <MenuCategory items={soup} btnTitle="order your favourite food"></MenuCategory>
+            <MenuCategory items={soup} btnTitle="order your favourite food" category="soups"></MenuCategory>
         </div>
     );
 };
