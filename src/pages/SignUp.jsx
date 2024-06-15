@@ -1,13 +1,36 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const SignUp = () => {
+    const {
+        createUser,
+        logOut,
+        updateUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
     const handleForm = e => {
         e.preventDefault();
         const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                updateUser(name, photo)
+                    .then(() => console.log('updated'))
+                logOut()
+                navigate('/login');
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+
     }
     return (
         <>

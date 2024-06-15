@@ -1,11 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { IoCartOutline } from "react-icons/io5";
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart();
+
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/menu'>Our Menu</NavLink></li>
         <li><NavLink to='/order/salad'>Order Foods</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+        {
+            user ? <li className="mt-2 ml-2 cursor-pointer" onClick={logOut}>Logout</li>
+                :
+                <li><NavLink to='/login'>Login</NavLink></li>
+        }
+        <li><Link to='/dashboard/cart'>
+            <button className="flex ml-5">
+                <span className="text-3xl"><IoCartOutline /></span>
+                <div className="badge badge-secondary">{cart.length}</div>
+            </button>
+        </Link></li>
+
     </>
 
     return (
@@ -27,7 +45,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <h1>{user?.displayName}</h1>
             </div>
         </div>
     );
