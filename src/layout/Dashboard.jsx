@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
     return (
-        <div className="flex">
+        <div className="flex gap-6">
             <div className="w-64 bg-orange-400 px-5 min-h-screen py-4">
                 <ul className="space-y-5">
                     <li><NavLink className="flex items-center gap-1" to='/dashboard/userHome'>
@@ -21,9 +21,17 @@ const Dashboard = () => {
                     <li><NavLink className="flex items-center gap-1" to='/dashboard/bookings'>
                     <FaList></FaList>
                     My Bookings</NavLink></li>
+                    <div className="divider"></div>
+                    <li><NavLink className="flex items-center gap-1" to='/'>
+                    <FaHome></FaHome>
+                    Home</NavLink></li>
+                    <li><NavLink className="flex items-center gap-1" to='/menu'>
+                    <FaList></FaList>
+                    Menu</NavLink></li>
                 </ul>
+
             </div>
-            <div className="flex-1">
+            <div className="flex-1 mt-5">
                 <Outlet></Outlet>
             </div>
         </div>
