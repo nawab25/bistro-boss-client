@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import SocialMediaLogin from "../components/SocialMediaLogin";
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
     const {
         createUser,
         logOut,
@@ -23,7 +26,14 @@ const SignUp = () => {
             .then(result => {
                 console.log(result.user);
                 updateUser(name, photo)
-                    .then(() => console.log('updated'))
+                    .then(() => {
+                        axiosPublic.post('/users', { name, email })
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('successfully posted user data');
+                                }
+                            })
+                    })
                 logOut()
                 navigate('/login');
             })
@@ -71,12 +81,15 @@ const SignUp = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" className="btn btn-primary" value="Sign up" />
                             </div>
+
+                        </form>
+                        <div className="px-8">
+                            <SocialMediaLogin></SocialMediaLogin>
                             <p className="text-center">
                                 <span>Already have an account?</span>
                                 <Link className="text-blue-500 underline" to='/login'>Sign in</Link>
                             </p>
-                        </form>
-
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../Providers/AuthProvider';
 import toast from 'react-hot-toast';
+import SocialMediaLogin from '../components/SocialMediaLogin';
 
 const Login = () => {
     const { login } = useContext(AuthContext);
@@ -26,7 +27,7 @@ const Login = () => {
             login(email, password)
                 .then(result => {
                     console.log(result.user);
-                    navigate(from, {replace: true});
+                    navigate(from, { replace: true });
                     toast.success('Successfully signed in!')
                 })
                 .catch(err => {
@@ -72,12 +73,14 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" className="btn btn-primary" value="Login" />
                             </div>
+                        </form>
+                        <div className='px-8'>
+                            <SocialMediaLogin></SocialMediaLogin>
                             <p className='text-center'>
                                 <span>New here?</span>
                                 <Link className='text-blue-500 underline' to='/sign-up'>Sign up</Link>
                             </p>
-                        </form>
-
+                        </div>
                     </div>
                 </div>
             </div>
