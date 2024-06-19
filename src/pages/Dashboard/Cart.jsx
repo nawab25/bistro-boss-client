@@ -1,9 +1,36 @@
 import { FaDeleteLeft } from "react-icons/fa6";
 import useCart from "../../hooks/useCart";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
+    const axiosSecure = useAxiosSecure();
     const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+
+    //delete items
+    const deleteItem = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete this item?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axiosSecure.delete(`/carts/${id}`)
+              .then(res => {
+                if(res.data.deletedCount > 0) {
+                    refetch();
+                    toast.success('Deleted successfully')
+                }
+              })
+            }
+          });
+    }
     return (
         <div>
             <div className="flex justify-evenly">
@@ -42,7 +69,7 @@ const Cart = () => {
                                     </td>
                                     <td className="text-lg font-bold">${item.price}</td>
                                     <th>
-                                        <button title="delete item" className="btn btn-ghost btn-xs text-xl"><FaDeleteLeft></FaDeleteLeft></button>
+                                        <button onClick={()=>deleteItem(item._id)} title="delete item" className="btn btn-ghost btn-xs text-xl"><FaDeleteLeft></FaDeleteLeft></button>
                                     </th>
                                 </tr>)
                             }
