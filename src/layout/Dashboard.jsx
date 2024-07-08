@@ -19,7 +19,7 @@ const Dashboard = () => {
                                 <FaHome></FaHome>
                                 Admin Home</NavLink></li>
 
-                            <li><NavLink className="flex items-center gap-1" to='/dashboard/adminAdItems'>
+                            <li><NavLink className="flex items-center gap-1" to='/dashboard/adItems'>
                                 <FaUtensils></FaUtensils>
                                 Add Items</NavLink></li>
 
